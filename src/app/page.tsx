@@ -1,31 +1,10 @@
 import { SignedIn, SignedOut } from "@clerk/nextjs";
-import Image from "next/image";
-import { getMyImages } from "~/server/queries";
+import Images from "./_components/images";
+import { Suspense } from "react";
 
 export const dynamic = "force-dynamic";
 
-async function Images() {
-  const images = await getMyImages();
-
-  return (
-    <div className="flex flex-wrap gap-4 px-6">
-      {images.map((image) => (
-        <div className="flex h-48 w-48 flex-col" key={image.id}>
-          <Image
-            src={image.url}
-            width={192}
-            height={192}
-            style={{ objectFit: "contain" }}
-            alt={image.name}
-          />
-          {image.name}
-        </div>
-      ))}
-    </div>
-  );
-}
-
-async function HomePage() {
+function HomePage() {
   return (
     <main>
       <SignedOut>
@@ -35,7 +14,9 @@ async function HomePage() {
       </SignedOut>
 
       <SignedIn>
-        <Images />
+        <Suspense fallback={<p className="p-6 text-2xl">Loading...</p>}>
+          <Images />
+        </Suspense>
       </SignedIn>
     </main>
   );
