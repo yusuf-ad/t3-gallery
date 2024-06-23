@@ -6,7 +6,7 @@ async function Images() {
   const images = await getMyImages();
 
   return (
-    <div className="flex flex-wrap gap-6 p-6">
+    <div className="flex flex-wrap justify-center gap-6 p-6">
       {[...images, ...images, ...images].map((image) => (
         <div className="flex h-48 w-48 flex-col" key={image.id}>
           <Link href={`/img/${image.id}`}>
