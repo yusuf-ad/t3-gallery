@@ -36,14 +36,12 @@ export default function RootLayout({
       <html lang="en" className={`${GeistSans.variable}`}>
         <body className="dark">
           <Toaster />
-
           <div className="grid h-screen grid-rows-[auto,1fr]">
             <TopNav />
-
             <main className="overflow-y-auto">{children}</main>
+            {modal}
           </div>
 
-          {modal}
           <div id="modal-root" />
         </body>
       </html>
