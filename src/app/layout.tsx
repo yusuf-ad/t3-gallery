@@ -33,7 +33,7 @@ export default function RootLayout({
         routerConfig={extractRouterConfig(ourFileRouter)}
       />
       <html lang="en" className={`${GeistSans.variable}`}>
-        <body className=" bg-black text-white">
+        <body className="dark">
           <div className="grid h-screen grid-rows-[auto,1fr]">
             <TopNav />
 
